@@ -1,0 +1,21 @@
+{
+    "name": "asantanacu/sharelogin",
+    "description": "Share login through different laravel apps",
+    "keywords": ["laravel", "login", "crossdomain"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Alexander Santana",
+            "email": "asantanacu@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.5.9",
+        "laravel/framework": "5.2.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Asantanacu\\ShareLogin\\": "src/"
+        }
+    }
+}
