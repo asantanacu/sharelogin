@@ -2,9 +2,7 @@
 
 namespace Asantanacu\ShareLogin;
 
-use Illuminate\Foundation\Auth\User as Authenticatable;
-
-class User extends Authenticatable
+trait User
 {
     public function usertokens(){
     	return $this->hasMany('Asantanacu\ShareLogin\UserToken');
