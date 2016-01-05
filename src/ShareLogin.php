@@ -4,6 +4,7 @@ namespace Asantanacu\ShareLogin;
 use Route;
 use Config;
 use Auth;
+use Session;
 
 class ShareLogin{
     public function routes()
@@ -23,18 +24,30 @@ class ShareLogin{
 		});
     }
     
-    public function login()
+    public function content()
     {
+    	if(Session::has('shared_login'))
+    		return $this->login();
+    	else
+    	if(Session::has('shared_logout'))
+    		return $this->logout();
+    	else
+    		return $this->refresh();
+    }
+    
+    private function login()
+    {
+    	$result = "";
     	foreach(Config::get('sharelogin.hosts') as $host)
     	{
     		$token = str_random(32);
-    		Auth::user()->usertokens()->create(['token' => $token]);
+    		UserToken::create(['token' => $token, 'user_id' => Auth::user()->id]);
     		$result .= "<img style='display: none;' src='{$host}/token/{$token}' >";
     	}
     	return $result;    		
     }
 
-    public function logout()
+    private function logout()
     {
     	$result = "";
     	foreach(Config::get('sharelogin.hosts') as $host)
@@ -42,7 +55,7 @@ class ShareLogin{
     	return $result;    	
     }
     
-    public function refresh()
+    private function refresh()
     {
     	$result = "";
     	foreach(Config::get('sharelogin.hosts') as $host)
