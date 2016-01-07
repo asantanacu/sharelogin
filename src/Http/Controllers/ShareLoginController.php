@@ -2,6 +2,7 @@
 namespace Asantanacu\ShareLogin\Http\Controllers;
 
 use Asantanacu\ShareLogin\Models\UserToken;
+use Illuminate\Routing\Controller;
 use Auth;
 
 class ShareLoginController extends Controller
