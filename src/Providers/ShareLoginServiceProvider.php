@@ -1,7 +1,9 @@
 <?php 
-namespace Asantanacu\ShareLogin;
+namespace Asantanacu\ShareLogin\Providers;
 
-class ServiceProvider extends \Illuminate\Support\ServiceProvider
+use Illuminate\Support\ServiceProvider;
+
+class ShareLoginServiceProvider extends ServiceProvider
 {
 	public function boot()
 	{
@@ -15,11 +17,22 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
 	    
 	    if (! $this->app->routesAreCached()) {
 	    	require __DIR__.'/../routes/routes.php';
-	    }	    
+	    }
+
+		$loader = \Illuminate\Foundation\AliasLoader::getInstance();
+		$aliases = \Config::get('app.aliases');
+
+		if (empty($aliases['ShareLogin'])) {
+			$loader->alias('ShareLogin', \Asantanacu\ShareLogin\Facades\ShareLogin::class);
+		}	    
 	}	
 	
     public function register()
     {
         $this->app->bind('sharelogin', 'Asantanacu\ShareLogin\ShareLogin');
+		
+		$this->commands([
+            'Asantanacu\ShareLogin\Console\Commands\ShareLogin',
+        ]);
     }
 }

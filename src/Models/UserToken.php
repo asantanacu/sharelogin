@@ -1,6 +1,6 @@
 <?php
 
-namespace Asantanacu\ShareLogin;
+namespace Asantanacu\ShareLogin\Models;
 
 use Illuminate\Database\Eloquent\Model;
 

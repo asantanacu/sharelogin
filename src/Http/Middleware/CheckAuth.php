@@ -1,6 +1,6 @@
 <?php
 
-namespace Asantanacu\ShareLogin\Middleware;
+namespace Asantanacu\ShareLogin\Http\Middleware;
 
 use Closure;
 use Auth;

@@ -1,7 +1,9 @@
 <?php
-namespace Asantanacu\ShareLogin;
+namespace Asantanacu\ShareLogin\Facades;
 
-class Facade extends \Illuminate\Support\Facades\Facade
+use Illuminate\Support\Facades\Facade;
+
+class ShareLogin extends Facade
 {
     /**
      * Get the registered name of the component.
