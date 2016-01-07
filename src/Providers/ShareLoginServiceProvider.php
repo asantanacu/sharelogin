@@ -8,15 +8,15 @@ class ShareLoginServiceProvider extends ServiceProvider
 	public function boot()
 	{
 	    $this->publishes([
-	        __DIR__.'/../config/sharelogin.php' => config_path('sharelogin.php')
+	        __DIR__.'/../../config/sharelogin.php' => config_path('sharelogin.php')
 	    ], 'config');
 	
 	    $this->publishes([
-	        __DIR__.'/../database/migrations/' => database_path('migrations')
+	        __DIR__.'/../../database/migrations/' => database_path('migrations')
 	    ], 'migrations');
 	    
 	    if (! $this->app->routesAreCached()) {
-	    	require __DIR__.'/../routes/routes.php';
+	    	require __DIR__.'/../Http/routes.php';
 	    }
 
 		$loader = \Illuminate\Foundation\AliasLoader::getInstance();

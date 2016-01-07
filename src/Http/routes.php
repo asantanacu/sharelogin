@@ -5,7 +5,7 @@ Route::group(['middleware' => 'web'], function () {
 	});
 	
 	Route::get('/token/{token}', function ($token) {
-		$usertoken = \Asantanacu\ShareLogin\UserToken::where('token',$token)->firstOrFail();
+		$usertoken = \Asantanacu\ShareLogin\Models\UserToken::where('token',$token)->firstOrFail();
 		Auth::loginUsingId($usertoken->user_id);
 		$usertoken->delete();
 	});
