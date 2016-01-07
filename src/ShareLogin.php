@@ -43,7 +43,7 @@ class ShareLogin{
     	{
     		$token = str_random(32);
     		UserToken::create(['token' => $token, 'user_id' => Auth::user()->id]);
-    		$result .= "<img style='display: none;' src='{$host}/token/{$token}' >";
+    		$result .= "<img style='display: none;' src='{$host}/sharelogin/token/{$token}' >";
     	}
     	return $result;    		
     }
@@ -52,7 +52,7 @@ class ShareLogin{
     {
     	$result = "";
     	foreach(Config::get('sharelogin.hosts') as $host)
-    		$result .= "<img style='display: none;' src='{$host}/auth/logout' >";
+    		$result .= "<img style='display: none;' src='{$host}/sharelogin/logout' >";
     	return $result;    	
     }
     
@@ -60,7 +60,7 @@ class ShareLogin{
     {
     	$result = "";
     	foreach(Config::get('sharelogin.hosts') as $host)
-    		$result .= "<img style='display: none;' src='{$host}/refresh' >";
+    		$result .= "<img style='display: none;' src='{$host}/sharelogin/refresh' >";
     	return $result;
     }
 }
