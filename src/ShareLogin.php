@@ -5,6 +5,7 @@ use Route;
 use Config;
 use Auth;
 use Session;
+use Asantanacu\ShareLogin\Models\UserToken;
 
 class ShareLogin{
     public function routes()
